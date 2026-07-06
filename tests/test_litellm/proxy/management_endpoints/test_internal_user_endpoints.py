@@ -929,7 +929,7 @@ async def test_new_user_non_admin_cannot_create_admin(mocker):
 
     # Setup the mock count response (under license limit)
     async def mock_count(*args, **kwargs):
-        return 5  # Low user count, under limit
+        return 300  # Low user count, under limit
 
     mock_prisma_client.db.litellm_usertable.count = mock_count
 
@@ -1399,7 +1399,7 @@ async def test_new_user_default_teams_flow(mocker):
 
     # Setup the mock count response (under license limit)
     async def mock_count(*args, **kwargs):
-        return 5  # Low user count, under limit
+        return 300  # Low user count, under limit
 
     mock_prisma_client.db.litellm_usertable.count = mock_count
 
