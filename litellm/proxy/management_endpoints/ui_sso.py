@@ -4158,14 +4158,14 @@ async def debug_sso_login(request: Request):
     generic_client_id = os.getenv("GENERIC_CLIENT_ID", None)
 
     ####### Check if user is a Enterprise / Premium User #######
-    if microsoft_client_id is not None or google_client_id is not None or generic_client_id is not None:
-        if premium_user is not True:
-            raise ProxyException(
-                message="You must be a LiteLLM Enterprise user to use SSO. If you have a license please set `LITELLM_LICENSE` in your env. If you want to obtain a license meet with us here: https://enterprise.litellm.ai/demo You are seeing this error message because You set one of `MICROSOFT_CLIENT_ID`, `GOOGLE_CLIENT_ID`, or `GENERIC_CLIENT_ID` in your env. Please unset this",
-                type=ProxyErrorTypes.auth_error,
-                param="premium_user",
-                code=status.HTTP_403_FORBIDDEN,
-            )
+    # if microsoft_client_id is not None or google_client_id is not None or generic_client_id is not None:
+    #    if premium_user is not True:
+    #        raise ProxyException(
+    #            message="You must be a LiteLLM Enterprise user to use SSO. If you have a license please set `LITELLM_LICENSE` in your env. If you want to obtain a license meet with us here: https://enterprise.litellm.ai/demo You are seeing this error message because You set one of `MICROSOFT_CLIENT_ID`, `GOOGLE_CLIENT_ID`, or `GENERIC_CLIENT_ID` in your env. Please unset this",
+    #            type=ProxyErrorTypes.auth_error,
+    #            param="premium_user",
+    #            code=status.HTTP_403_FORBIDDEN,
+    #        )
 
     # get url from request
     redirect_url = SSOAuthenticationHandler.get_redirect_url_for_sso(
